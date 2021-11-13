@@ -42,7 +42,7 @@ namespace UbiquitousD
                 {
                     for (var j = 0; j < exclusion.Length; j++)
                     {
-                        if (!(transform.GetChild(i).gameObject.name == exclusion[j])
+                        if (!(transform.GetChild(i).gameObject.name == exclusion[j]))
                         {
                             transform.GetChild(i).gameObject.SetActive(decision);
                         }
