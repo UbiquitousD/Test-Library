@@ -10,22 +10,36 @@ namespace UbiquitousD
         /// <param name="basePosition">基点となるポジション</param>
         /// <param name="targetPosition">ターゲットのポジション</param>
         /// <param name="searchRange">探索範囲</param>
-        public static bool InRange(Vector2 basePosition, Vector2 targetPosition, float searchRange)
+        public static bool InRange2D(Vector2 basePosition, Vector2 targetPosition, float searchRange)
         {
-            // 基点となる座標から対象の座標を引き、各座標の差を求める
+            double sqrDistance = SqrDistance2D(basePosition, targetPosition);
+            return sqrDistance < (searchRange * searchRange);
+        }
+
+        /// <summary>
+        /// 基点となるポジションから指定した範囲内にターゲットが存在するか
+        /// </summary>
+        /// <param name="basePosition">基点となるポジション</param>
+        /// <param name="targetPosition">ターゲットのポジション</param>
+        /// <param name="searchRange">探索範囲</param>
+        public static bool InRange3D(Vector3 basePosition, Vector3 targetPosition, float searchRange)
+        {
+            double sqrDistance = SqrDistance3D(basePosition, targetPosition);
+            return sqrDistance < (searchRange * searchRange);
+        }
+        
+        public static float SqrDistance2D(Vector2 basePosition, Vector2 targetPosition)
+        {
             Vector2 difference = basePosition - targetPosition;
-            // 各座標の２乗を足し，ルート化前の状態にする
-            double distance = (difference.x * difference.x) + (difference.y * difference.y);
-            // 探索範囲を２乗したものを比較し，その距離内だった場合はtrue
-            return distance < (searchRange * searchRange);
+            return (difference.x * difference.x) + (difference.y * difference.y);
         }
 
-        public static float GetDistance((float x, float y) vector1, (float x, float y) vector2)
+        public static float SqrDistance3D(Vector3 basePosition, Vector3 targetPosition)
         {
-            // 作成中
-            return 1.0f;
+            Vector3 difference = basePosition - targetPosition;
+            return (difference.x * difference.x) + (difference.y * difference.y) + (difference.z * difference.z);
         }
-
+        
         /// <summary>
         /// 入力された数値の範囲を別の範囲へと変更する
         /// </summary>
