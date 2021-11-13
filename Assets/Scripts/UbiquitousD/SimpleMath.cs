@@ -25,7 +25,7 @@ namespace UbiquitousD
         public static bool InRange3D(Vector3 basePosition, Vector3 targetPosition, float searchRange)
         {
             double sqrDistance = SqrDistance3D(basePosition, targetPosition);
-            return sqrDistance < (searchRange * searchRange);
+            return sqrDistance < (searchRange * searchRange * searchRange);
         }
         
         public static float SqrDistance2D(Vector2 basePosition, Vector2 targetPosition)
