@@ -53,5 +53,13 @@ namespace UbiquitousD
         {
             return start2 + (end2 - start2) * ((value - start1) / (end1 - start1));
         }
+        
+        /// <summary>
+        /// 数値を-1, 0, 1のどれかに調整
+        /// </summary>
+        public static int Grading(double num)
+        {
+            return num < 0 ? -1 : num == 0 ? 0 : 1;
+        }
     }
 }
